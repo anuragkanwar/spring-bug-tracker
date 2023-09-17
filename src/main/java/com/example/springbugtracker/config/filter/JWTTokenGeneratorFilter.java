@@ -38,6 +38,8 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
             response.setHeader(AppConstant.AUTHORIZATION_HEADER, jwt);
             Cookie cookie = new Cookie(AppConstant.AUTHORIZATION_HEADER, jwt);
             cookie.setPath("/");
+            cookie.setSecure(true);
+            cookie.setAttribute("SameSite", "None");
             response.addCookie(cookie);
         }
 
